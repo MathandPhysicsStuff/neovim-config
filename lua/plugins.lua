@@ -14,10 +14,32 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    "rebelot/kanagawa.nvim",
-    config = function()
-        vim.cmd.colorscheme("kanagawa-wave")
+    {
+        "rebelot/kanagawa.nvim",
+        config = function()
+            vim.cmd.colorscheme("kanagawa-wave")
+        end,
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        config = function()
+            require("nvim-treesitter.configs").setup {
+                ensure_installed = { "c", "lua", "vim", "vimdoc", "query",
+                                     "asm", "haskell", "odin", "rust", "zig",
+                                     "python", "javascript", "css", "html"
+                                   },
+
+                sync_install = false,
+
+                auto_install = true,
+
+
+                highlight = {
+                    enable = true,
+            },
+        }
     end,
+    },
 })
 
 
